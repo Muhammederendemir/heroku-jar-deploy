@@ -12,8 +12,10 @@ public class HelloWorld {
 
     @GetMapping("/v2/test")
     @ResponseStatus(value = HttpStatus.OK)
-    public void sayHello(){
+    public String sayHello(){
+
         System.out.printf("Selam Anıl");
+        return "test1";
     }
 
     @PostMapping("/v2/test")
