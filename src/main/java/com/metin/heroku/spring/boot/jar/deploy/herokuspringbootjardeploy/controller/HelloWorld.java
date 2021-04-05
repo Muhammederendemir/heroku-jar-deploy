@@ -15,15 +15,14 @@ public class HelloWorld {
     @GetMapping("/v2/test")
     @ResponseStatus(value = HttpStatus.OK)
     public String sayHello(){
-
-        System.out.printf("Selam Anıl");
-        return "test1";
+        last = "test Get";
+        return last;
     }
 
     @PostMapping("/v2/test")
     @ResponseStatus(value = HttpStatus.OK)
     public void sayHelloPost(){
-        System.out.printf("Selam Anıl");
+        last = "test Post";
     }
 
 
@@ -59,19 +58,54 @@ public class HelloWorld {
     @ResponseStatus(value = HttpStatus.OK)
     public void sayHello3(String code, String state, String error){
         last = code+state+error;
+
     }
 
     @PostMapping("/v2/test3")
     @ResponseStatus(value = HttpStatus.OK)
-    public void sayHelloPost3(String code, String state, String error){
-        last = code+state+error;
+    public void sayHelloPost3(String code, String state, String error) {
+        last = code + state + error;
+
     }
 
     @GetMapping("/v2/test4")
     @ResponseStatus(value = HttpStatus.OK)
-    public String sayHello4(){
-
+    public String sayHello4() {
         return last;
+    }
+
+
+    @PostMapping("/v2/test5")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void sayHelloPost5(@RequestBody String token) {
+        last = token;
+        System.out.printf(token);
+    }
+
+    @GetMapping("/v2/test6")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void sayHello6(@RequestBody Object object) {
+        last = object.toString();
+        System.out.printf(object.toString());
+    }
+
+    @PostMapping("/v2/test7")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void sayHelloPost7(@RequestBody Object object) {
+        last = object.toString();
+        System.out.printf(object.toString());
+    }
+
+    @GetMapping("/v2/test8")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void sayHello8(@RequestBody String code, @RequestBody String state, @RequestBody String error) {
+        last = code + state + error;
+    }
+
+    @PostMapping("/v2/test9")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void sayHelloPost9(@RequestBody String code, @RequestBody String state, @RequestBody String error) {
+        last = code + state + error;
     }
 
 }
